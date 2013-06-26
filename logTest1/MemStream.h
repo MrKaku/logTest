@@ -7,8 +7,8 @@
 class CMemStream
 {
 public:
-    CMemStream(void);
-    ~CMemStream(void);
+    CMemStream(void){};
+    ~CMemStream(void){};
 
     CMemStream& operator<<( bool b )
     {
