@@ -12,19 +12,19 @@ public:
 
     CMemStream& operator<<( bool b )
     {
-        m_buf->Append(b?"1":"0", 1);
+        m_buf.Append(b?"1":"0", 1);
         return *this;
     }
 
     CMemStream& operator<<( char c )
     {
-        m_buf->Append(&c, sizeof(char));
+        m_buf.Append(&c, sizeof(char));
         return *this;
     }
 
     CMemStream& operator<<( unsigned char uc )
     {
-        m_buf->Append(&uc, sizeof(unsigned char));
+        m_buf.Append(&uc, sizeof(unsigned char));
         return *this;
     }
 
@@ -32,7 +32,7 @@ public:
     {
         char str[128]={0};
         _snprintf(str, sizeof(str), "%hd", s);
-        m_buf->Append(str, strlen(str));
+        m_buf.Append(str, strlen(str));
         return *this;
     }
 
@@ -40,7 +40,7 @@ public:
     {
         char str[128]={0};
         _snprintf(str, sizeof(str), "%hu", us);
-        m_buf->Append(str, strlen(str));
+        m_buf.Append(str, strlen(str));
         return *this;
     }
 
@@ -48,7 +48,7 @@ public:
     {
         char str[128]={0};
         _snprintf(str, sizeof(str), "%d", i);
-        m_buf->Append(str, strlen(str));
+        m_buf.Append(str, strlen(str));
         return *this;
     }
 
@@ -56,7 +56,7 @@ public:
     {
         char str[128]={0};
         _snprintf(str, sizeof(str), "%u", ui);
-        m_buf->Append(str, strlen(str));
+        m_buf.Append(str, strlen(str));
         return *this;
     }
 
@@ -64,7 +64,7 @@ public:
     {
         char str[128]={0};
         _snprintf(str, sizeof(str), "%ld", l);
-        m_buf->Append(str, strlen(str));
+        m_buf.Append(str, strlen(str));
         return *this;
     }
 
@@ -72,7 +72,7 @@ public:
     {
         char str[128]={0};
         _snprintf(str, sizeof(str), "%lu", ul);
-        m_buf->Append(str, strlen(str));
+        m_buf.Append(str, strlen(str));
         return *this;
     }
 
@@ -80,7 +80,7 @@ public:
     {
         char str[128]={0};
         _snprintf(str, sizeof(str), "%I64d", ll);
-        m_buf->Append(str, strlen(str));
+        m_buf.Append(str, strlen(str));
         return *this;
     }
 
@@ -88,7 +88,7 @@ public:
     {
         char str[128]={0};
         _snprintf(str, sizeof(str), "%I64u", ull);
-        m_buf->Append(str, strlen(str));
+        m_buf.Append(str, strlen(str));
         return *this;
     }
 
@@ -96,7 +96,7 @@ public:
     {
         char str[128]={0};
         _snprintf(str, sizeof(str), "%f", f);
-        m_buf->Append(str, strlen(str));
+        m_buf.Append(str, strlen(str));
         return *this;
     }
 
@@ -104,19 +104,19 @@ public:
     {
         char str[128]={0};
         _snprintf(str, sizeof(str), "%lf", d);
-        m_buf->Append(str, strlen(str));
+        m_buf.Append(str, strlen(str));
         return *this;
     }
 
     CMemStream& operator<<( const char* str )
     {
-        m_buf->Append(str, strlen(str));
+        m_buf.Append(str, strlen(str));
         return *this;
     }
 
     CMemStream& operator<<( const std::string& s )
     {
-        m_buf->Append(s.c_str(), s.size());
+        m_buf.Append(s.c_str(), s.size());
         return *this;
     }
 
@@ -124,21 +124,21 @@ public:
     {
         char str[128]={0};
         _snprintf(str, sizeof(str), "0x%p", pVoid);
-        m_buf->Append(str, strlen(str));
+        m_buf.Append(str, strlen(str));
         return *this;
     }
 
     const char* GetBuffer()
     {
-        return m_buf->GetBuffer();
+        return m_buf.GetBuffer();
     }
 
     int GetSize()
     {
-        return m_buf->GetSize();
+        return m_buf.GetSize();
     }
 
 
 private:
-    CBuffer         *m_buf;
+    CBuffer         m_buf;
 };

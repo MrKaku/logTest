@@ -5,13 +5,11 @@
 
 
 CMemStream::CMemStream(void)
-    :m_buf(NULL)
 {
-    m_buf = new CBuffer;
+    
 }
 
 
 CMemStream::~CMemStream(void)
 {
-    delete m_buf;
 }

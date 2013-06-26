@@ -1,5 +1,5 @@
 #pragma once
-#include <string.h>
+#include <stdlib.h>
 
 class CBuffer
 {
@@ -12,6 +12,7 @@ public:
         , m_bufSize(MIN_BUF_SIZE)
     {
         m_data = (char*)malloc(m_bufSize);
+        m_curPos = m_data;
     }
 
     ~CBuffer(void)
@@ -51,7 +52,7 @@ public:
     };
 
 private:
-    char        *m_data;
     long        m_bufSize;
+    char        *m_data;
     char        *m_curPos;
 };
